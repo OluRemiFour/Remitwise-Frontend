@@ -160,3 +160,37 @@ body {
   outline-offset: 2px !important;
 }
 
+/*
+ * Route progress bar – fixed at the very top of the viewport.
+ * Respects prefers-reduced-motion by disabling the animation.
+ */
+.rw-route-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  background: transparent;
+  pointer-events: none;
+}
+
+.rw-route-progress__bar {
+  height: 100%;
+  width: 100%;
+  background: var(--rw-progress-color, #D72323);
+  transform-origin: left;
+  transition: transform 250ms ease, opacity 300ms ease;
+  box-shadow: 0 0 8px var(--rw-progress-glow, rgba(215, 35, 35, 0.4));
+}
+
+.rw-route-progress__bar[style*="translateX(-100%)"] {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rw-route-progress__bar {
+    transition: none;
+  }
+}
+

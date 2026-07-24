@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import BackToTop from "@/components/BackToTop";
+import RouteProgress from "@/components/RouteProgress";
 import { DEFAULT_SEO } from "@/lib/config/seo";
 
 // @ts-ignore
@@ -58,6 +59,7 @@ export default async function RootLayout({
         <script nonce={nonce} dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="starry-bg min-h-screen font-sans">
+        <RouteProgress />
         <Providers>{children}</Providers>
         <BackToTop />
       </body>
